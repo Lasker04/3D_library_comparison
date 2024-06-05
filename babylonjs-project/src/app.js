@@ -47,8 +47,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const animate = function () {
     engine.runRenderLoop(function () {
       scene.render();
-      scene.meshes[0].rotation.x += 0.01;
-      scene.meshes[0].rotation.y += 0.01;
+      scene.meshes[0].rotation.y -= 0.01;
     });
   };
 

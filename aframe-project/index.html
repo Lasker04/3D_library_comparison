@@ -10,7 +10,7 @@
       shadow="type: pcfsoft"
       renderer="antialias: true; gammaOutput: true;"
     >
-      <a-entity camera position="0 1 0"></a-entity>
+      <a-entity camera look-at="[0, 0, 0]" position="0 1 5"></a-entity>
       <a-light type="ambient" color="#555555"></a-light>
       <a-light
         type="directional"
@@ -38,12 +38,10 @@
           speed: { type: "number", default: 1 },
         },
         tick: function (time, timeDelta) {
-          this.el.object3D.rotation.x += (this.data.speed * timeDelta) / 1000;
           this.el.object3D.rotation.y += (this.data.speed * timeDelta) / 1000;
         },
       });
-
-      document.querySelector("[rotate]").setAttribute("rotate", "speed: 1");
+      document.querySelector("[rotate]").setAttribute("rotate", "speed: 0.5");
     </script>
   </body>
 </html>

@@ -11,19 +11,33 @@ function init() {
   const renderer = new THREE.WebGLRenderer();
 
   renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.shadowMap.enabled = true; // Shadow enabled
   document.body.appendChild(renderer.domElement);
 
-  const geometry = new THREE.BoxGeometry();
-  const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-  const cube = new THREE.Mesh(geometry, material);
-  scene.add(cube);
+  const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+  directionalLight.position.set(1, 1, 1);
+  directionalLight.castShadow = true; // Cast shadow
+  scene.add(directionalLight);
 
-  camera.position.z = 5;
+  const planeGeometry = new THREE.PlaneGeometry(5, 5);
+  const planeMaterial = new THREE.MeshStandardMaterial({ color: 0x00ff00 });
+  const plane = new THREE.Mesh(planeGeometry, planeMaterial);
+  plane.rotation.x = -Math.PI / 2;
+  plane.receiveShadow = true; // Receive shadow
+  scene.add(plane);
+
+  const boxGeometry = new THREE.BoxGeometry(1, 1, 1);
+  const boxMaterial = new THREE.MeshStandardMaterial({ color: 0x00ff00 }); // キューブの色を緑に変更
+  const box = new THREE.Mesh(boxGeometry, boxMaterial);
+  box.position.y = 0.5;
+  box.castShadow = true; // Cast shadow
+  scene.add(box);
+
+  camera.position.z = 5; // Changed to 5 for consistent camera distance
 
   function animate() {
     requestAnimationFrame(animate);
-    cube.rotation.x += 0.01;
-    cube.rotation.y += 0.01;
+    box.rotation.y += 0.01;
     renderer.render(scene, camera);
   }
 
