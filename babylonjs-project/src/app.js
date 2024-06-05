@@ -24,11 +24,12 @@ window.addEventListener("DOMContentLoaded", () => {
     camera.inputs.clear();
 
     // Create a basic light
-    const light = new BABYLON.HemisphericLight(
+    const light = new BABYLON.DirectionalLight(
       "light1",
-      new BABYLON.Vector3(0, 1, 0),
+      new BABYLON.Vector3(-1, 1, 1), // 光源の方向を右から左へ変更
       scene
     );
+    light.intensity = 0.7;
 
     // Create a built-in "box" shape
     const box = BABYLON.MeshBuilder.CreateBox("box", { size: 1 }, scene);
@@ -37,6 +38,8 @@ window.addEventListener("DOMContentLoaded", () => {
     const material = new BABYLON.StandardMaterial("material", scene);
     material.diffuseColor = new BABYLON.Color3(0, 1, 0); // Green color
     box.material = material;
+
+    scene.clearColor = new BABYLON.Color4(1, 1, 1, 1); // 背景色を白に設定
 
     return scene;
   };
@@ -53,9 +56,4 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // Start the animation
   animate();
-
-  // Watch for browser/canvas resize events
-  window.addEventListener("resize", function () {
-    engine.resize();
-  });
 });

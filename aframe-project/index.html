@@ -6,17 +6,13 @@
     <script src="node_modules/aframe/dist/aframe-master.js"></script>
   </head>
   <body>
-    <a-scene
-      shadow="type: pcfsoft"
-      renderer="antialias: true; gammaOutput: true;"
-    >
-      <a-entity camera look-at="[0, 0, 0]" position="0 1 5"></a-entity>
-      <a-light type="ambient" color="#555555"></a-light>
+    <a-scene renderer="antialias: true; gammaOutput: true;">
+      <a-entity camera look-at="[0, 0, 0]" position="0 0.5 0"></a-entity>
       <a-light
         type="directional"
         color="#ffffff"
         intensity="1"
-        position="-1 2 1"
+        position="1 2 -1"
         target="#target"
         castShadow="true"
       ></a-light>
@@ -29,7 +25,7 @@
         shadow
         material="shader: standard; roughness: 0.4; metalness: 0.1;"
       ></a-box>
-      <a-sky color="#ECECEC"></a-sky>
+      <a-sky color="#ffffff"></a-sky>
     </a-scene>
 
     <script>
