@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>My A-Frame Project</title>
+    <script src="node_modules/aframe/dist/aframe-master.js"></script>
+  </head>
+  <body>
+    <a-scene
+      shadow="type: pcfsoft"
+      renderer="antialias: true; gammaOutput: true;"
+    >
+      <a-entity camera position="0 1 0"></a-entity>
+      <a-light type="ambient" color="#555555"></a-light>
+      <a-light
+        type="directional"
+        color="#ffffff"
+        intensity="1"
+        position="-1 2 1"
+        target="#target"
+        castShadow="true"
+      ></a-light>
+      <a-box
+        id="target"
+        position="0 0.5 -3"
+        rotation="0 0 0"
+        color="#00ff00"
+        rotate
+        shadow
+        material="shader: standard; roughness: 0.4; metalness: 0.1;"
+      ></a-box>
+      <a-sky color="#ECECEC"></a-sky>
+    </a-scene>
+
+    <script>
+      AFRAME.registerComponent("rotate", {
+        schema: {
+          speed: { type: "number", default: 1 },
+        },
+        tick: function (time, timeDelta) {
+          this.el.object3D.rotation.x += (this.data.speed * timeDelta) / 1000;
+          this.el.object3D.rotation.y += (this.data.speed * timeDelta) / 1000;
+        },
+      });
+
+      document.querySelector("[rotate]").setAttribute("rotate", "speed: 1");
+    </script>
+  </body>
+</html>
