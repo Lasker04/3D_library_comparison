@@ -3,11 +3,15 @@
   <head>
     <meta charset="utf-8" />
     <title>My A-Frame Project</title>
+    <!-- A-Frameライブラリを読み込む -->
     <script src="node_modules/aframe/dist/aframe-master.js"></script>
   </head>
   <body>
+    <!-- A-Frameシーンを設定 -->
     <a-scene renderer="antialias: true; gammaOutput: true;">
+      <!-- カメラエンティティを設定 -->
       <a-entity camera look-at="[0, 0, 0]" position="0 0.5 0"></a-entity>
+      <!-- ライトを設定 -->
       <a-light
         type="directional"
         color="#ffffff"
@@ -16,6 +20,7 @@
         target="#target"
         castShadow="true"
       ></a-light>
+      <!-- 回転するボックスを設定 -->
       <a-box
         id="target"
         position="0 0.5 -3"
@@ -25,9 +30,11 @@
         shadow
         material="shader: standard; roughness: 0.4; metalness: 0.1;"
       ></a-box>
+      <!-- 背景を設定 -->
       <a-sky color="#ffffff"></a-sky>
     </a-scene>
 
+    <!-- 回転コンポーネントを登録 -->
     <script>
       AFRAME.registerComponent("rotate", {
         schema: {
@@ -37,6 +44,7 @@
           this.el.object3D.rotation.y += (this.data.speed * timeDelta) / 1000;
         },
       });
+      // 回転速度を設定
       document.querySelector("[rotate]").setAttribute("rotate", "speed: 0.5");
     </script>
   </body>
