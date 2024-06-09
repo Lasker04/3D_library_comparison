@@ -12,7 +12,8 @@ const camera = new THREE.PerspectiveCamera(
 );
 
 // レンダラーを設定
-const renderer = new THREE.WebGLRenderer();
+const canvas = document.querySelector(".webgl");
+const renderer = new THREE.WebGLRenderer({ canvas: canvas });
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.shadowMap.enabled = true;
 renderer.setClearColor(0xffffff);
