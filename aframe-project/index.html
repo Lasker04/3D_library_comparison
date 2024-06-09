@@ -6,7 +6,7 @@
     <script src="node_modules/aframe/dist/aframe-master.js"></script>
   </head>
   <body>
-    <!-- シーンを設定 -->
+    <!-- シーン -->
     <a-scene renderer="antialias: true; gammaOutput: true;">
       <!-- カメラ -->
       <a-entity camera look-at="0 0 0" position="0 0 3"></a-entity>
@@ -29,7 +29,6 @@
       <a-sky color="#ffffff"></a-sky>
     </a-scene>
 
-    <!-- 回転コンポーネントを登録 -->
     <script>
       AFRAME.registerComponent("rotate-box", {
         schema: {
@@ -39,7 +38,6 @@
           this.el.object3D.rotation.y += (this.data.speed * timeDelta) / 1000;
         },
       });
-      // 回転速度を設定
       document
         .getElementById("targetBox")
         .setAttribute("rotate-box", "speed: 0.5");
