@@ -33,5 +33,5 @@ box.material = material;
 // アニメーション
 engine.runRenderLoop(function () {
   scene.render();
-  scene.getMeshByName("box").rotation.y -= 0.01;
+  scene.getMeshByName("box").rotation.y -= 0.01; // 左手座標系
 });

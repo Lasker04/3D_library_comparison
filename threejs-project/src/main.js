@@ -40,7 +40,7 @@ scene.add(box);
 // アニメーション
 function animate() {
   requestAnimationFrame(animate);
-  box.rotation.y += 0.01;
+  box.rotation.y += 0.01; // 右手座標系
   renderer.render(scene, camera);
 }
 

@@ -35,12 +35,12 @@
           speed: { type: "number", default: 1 },
         },
         tick: function (time, timeDelta) {
-          this.el.object3D.rotation.y += (this.data.speed * timeDelta) / 1000;
+          this.el.object3D.rotation.y += 0.01; // 右手座標系
         },
       });
       document
         .getElementById("targetBox")
-        .setAttribute("rotate-box", "speed: 0.5");
+        .setAttribute("rotate-box", "speed: 1");
     </script>
   </body>
 </html>
