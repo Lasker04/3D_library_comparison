@@ -30,6 +30,7 @@ const material = new BABYLON.StandardMaterial("material", scene);
 material.diffuseColor = new BABYLON.Color3(0, 1, 0);
 box.material = material;
 
+// アニメーション
 engine.runRenderLoop(function () {
   scene.render();
   scene.getMeshByName("box").rotation.y -= 0.01;

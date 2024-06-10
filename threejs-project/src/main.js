@@ -37,7 +37,7 @@ const box = new THREE.Mesh(
 box.position.set(0, 0, 0);
 scene.add(box);
 
-// アニメーション関数を定義
+// アニメーション
 function animate() {
   requestAnimationFrame(animate);
   box.rotation.y += 0.01;
