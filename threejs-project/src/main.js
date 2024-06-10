@@ -6,8 +6,10 @@ const sizes = {
   height: window.innerHeight,
 };
 
+// キャンバス要素
+const canvas = document.getElementById("webgl");
+
 // レンダラー
-const canvas = document.querySelector(".webgl");
 const renderer = new THREE.WebGLRenderer({ canvas: canvas });
 renderer.setSize(sizes.width, sizes.height);
 renderer.setClearColor(0xffffff);
@@ -24,7 +26,7 @@ camera.position.z = 3;
 
 // ライト
 const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-directionalLight.position.set(1, 1, 1);
+directionalLight.position.set(1, 1, 1); //
 scene.add(directionalLight);
 
 // ボックス
